@@ -11,6 +11,14 @@ $ nest new <project_name>
 $ npm install
 ```
 
+### Dependency Module
+
+```bash
+$ npm i class-transformer
+$ npm i class-validator
+$ npm i mapped-types
+```
+
 ### Running the app
 
 ```bash
@@ -40,4 +48,8 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
- 
+ ## TodoList
+ 1. Absolute Path
+ 2. Logging
+ 3. Database
+ 4. @nestjs/config
