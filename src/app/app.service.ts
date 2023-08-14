@@ -12,7 +12,8 @@ export class AppService {
     this.myLogger.appLog('/ [HEAD] checking status!')
   }
 
-  get(): string { 
+  get(): string {
+    this.myLogger.appLog('/ [GET]')
     return 'Hello World!';
   }
 }
