@@ -1,9 +1,11 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { AppController } from '@app/app.controller';
 import { AppService } from '@app/app.service';
-import { LoggerModule } from '@src/loader/logger/MyLoggerModule';
+import { LoggerModule } from '@src/middleware/logger/MyLoggerModule';
 import { ConfigModule } from '@nestjs/config';
 import config from '@src/config/config';
+import { LoggerExpress } from '@src/middleware/logger/logger.express';
+import { LoggerFastify } from '@src/middleware/logger/logger.fastify';
 
 @Module({
   imports: [LoggerModule, ConfigModule.forRoot({
@@ -13,4 +15,9 @@ import config from '@src/config/config';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerFastify)
+      .forRoutes({path: '*', method: RequestMethod.ALL})
+  }
+}

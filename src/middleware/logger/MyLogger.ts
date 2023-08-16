@@ -10,8 +10,7 @@ export class MyLogger extends ConsoleLogger {
   appLog(msg: string) {
     if (process.env.NODE_ENV === 'PROD') {
       this.log(msg);
-    } else {
-      // DEV
+    } else { // DEV
       this.debug(msg);
     }
   }

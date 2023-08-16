@@ -76,7 +76,8 @@
     "moduleNameMapper": {
       "^@src/(.*)$": "<rootDir>/$1",
       "^@app/(.*)$": "<rootDir>/app/$1",
-      "^@loader/(.*)$": "<rootDir>/loader/$1"
+      "^@loader/(.*)$": "<rootDir>/loader/$1",
+      "^@middleware/(.*)$": "<rootDir>/middleware/$1"
     }
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { MyLogger } from '@loader/logger/MyLogger';
+import { MyLogger } from '@src/middleware/logger/MyLogger';
 
 @Injectable()
 export class AppService {
@@ -9,11 +9,19 @@ export class AppService {
   }
 
   getStatus(): void { 
-    this.myLogger.appLog('/ [HEAD] checking status!')
   }
 
   get(): string {
-    this.myLogger.appLog('/ [GET]')
     return 'Hello World!';
   }
+
+  getExpress(req, ip): void {
+  }
+
+  getRedirect(): void {
+  }
+
+  getDocs(): void {
+  }
+
 }

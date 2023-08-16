@@ -4,7 +4,8 @@
     "paths": {
       "@src/*": ["./src/*"],
       "@app/*": ["./src/app/*"],
-      "@loader/*": ["./src/loader/*"]
+      "@loader/*": ["./src/loader/*"],
+      "@middleware/*": ["./src/middleware/*"]
     }
   }
 }

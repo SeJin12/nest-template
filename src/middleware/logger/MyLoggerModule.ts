@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { MyLogger } from '@loader/logger/MyLogger';
+import { MyLogger } from '@src/middleware/logger/MyLogger';
 
 @Module({
   providers: [MyLogger],

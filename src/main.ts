@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from '@app/app.module';
-import { MyLogger } from '@loader/logger/MyLogger';
+import { MyLogger } from '@src/middleware/logger/MyLogger';
 import { ConfigService } from '@nestjs/config';
 
 const logger = new MyLogger();
