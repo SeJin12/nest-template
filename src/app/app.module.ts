@@ -5,12 +5,16 @@ import { LoggerModule } from '@src/middleware/logger/MyLoggerModule';
 import { ConfigModule } from '@nestjs/config';
 import config from '@src/config/config';
 import { LoggerFastify } from '@src/middleware/logger/logger.fastify';
+import { AuthController } from '@src/auth/auth.controller';
+import { AuthService } from '@src/auth/auth.service';
+import { AuthModule } from '@src/auth/auth.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [LoggerModule, ConfigModule.forRoot({
     load: [config],
     isGlobal: true,
-  })],
+  }), JwtModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
