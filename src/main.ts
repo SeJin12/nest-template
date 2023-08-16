@@ -1,7 +1,8 @@
-import { NestFactory } from '@nestjs/core';
+import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { AppModule } from '@app/app.module';
 import { MyLogger } from '@src/middleware/logger/MyLogger';
 import { ConfigService } from '@nestjs/config';
+import { HttpExceptionsFilter } from '@src/middleware/exception/HttpExceptionsFilter'
 
 const logger = new MyLogger();
 logger.setContext('main.ts');
@@ -19,7 +20,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     bufferLogs: true,
     logger: new MyLogger(),
-    cors : { // cors #1
+    cors: { // cors #1
       origin: ['http://localhost:3000', '*']
       , optionsSuccessStatus: 200
       , maxAge: 300
@@ -29,6 +30,8 @@ async function bootstrap() {
 
   // cors #2
   // app.enableCors({origin: '*'});
+  const httpAdapter = app.get(HttpAdapterHost);
+  app.useGlobalFilters(new HttpExceptionsFilter(httpAdapter));
 
   const configService = app.get(ConfigService);
   const port = configService.get('http.port');
