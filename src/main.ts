@@ -3,6 +3,7 @@ import { AppModule } from '@app/app.module';
 import { MyLogger } from '@src/middleware/logger/MyLogger';
 import { ConfigService } from '@nestjs/config';
 import { HttpExceptionsFilter } from '@src/middleware/exception/HttpExceptionsFilter'
+import { ValidationPipe } from '@nestjs/common';
 
 const logger = new MyLogger();
 logger.setContext('main.ts');
@@ -30,9 +31,16 @@ async function bootstrap() {
 
   // cors #2
   // app.enableCors({origin: '*'});
+  
   const httpAdapter = app.get(HttpAdapterHost);
   app.useGlobalFilters(new HttpExceptionsFilter(httpAdapter));
-
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true
+    })
+  )
   const configService = app.get(ConfigService);
   const port = configService.get('http.port');
 

@@ -73,6 +73,15 @@ jest는 자바스크립트를 쉽게 테스팅하는 npm 패키지
 <br>
 `e2e (End to End)` 전체 시스템을 테스트
 
+## list
+- absolute path
+- logging
+- middleware 
+- config
+- exception filter
+- pipe
+- cors
+
  ## TodoList
  1. Absolute Path (OK)
  2. Logging (OK)
@@ -82,15 +91,17 @@ jest는 자바스크립트를 쉽게 테스팅하는 npm 패키지
     2. const configService = app.get(ConfigService);
         1. configService.get('SERVER_PORT') # .env
         2. configService.get('http.port'); # *.yaml
+ 5. testing
 
-  - ```  
+  
+  
         yaml은 컴파일시에 dist 폴더로 copy 되지 않음
         ERROR [ExceptionHandler] ENOENT: no such file or directory, open '/Users/sejin/Documents/nest_template/dist/config/config.yaml'
         cpx 모듈 설치
         "copy-files": "cpx \"src/config/*.yaml\" dist/config/",
          https://codegear.tistory.com/82
         nest-cli.json - deleteOutDir : false
-        ```
+ 
  
 
 ### 참고 링크
